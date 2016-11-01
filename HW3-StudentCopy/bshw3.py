@@ -10,3 +10,14 @@
 
 # Deliverables
 # Make sure the new page is uploaded to your GitHub account.
+
+import urllib.request, urllib.parse, urllib.error
+import requests
+from bs4 import BeautifulSoup
+
+base_url = "https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions"
+html2 = urllib.request.urlopen(base_url).read()
+soup = BeautifulSoup(html2, "html.parser")
+html = soup.prettify("utf-8")
+with open("BSIpage.html", "wb") as file:
+	file.write(html)
