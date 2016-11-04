@@ -5,6 +5,7 @@
 # You will demo this live for grading.
 import tweepy
 
+#my twitter account information
 access_token = "3006509597-dSfovhqgakdhl5YzjPr62n2LhW8VET3iDuI4x4q"
 access_token_secret = "3mnJDMPA8DEM6roaEjfJ3yNAYYKhlp1oPdOsXuujKjNwI"
 consumer_key = "pLUjmsAzgYqU4e3799AdHtfGG"

@@ -13,11 +13,17 @@
 
 import urllib.request, urllib.parse, urllib.error
 import requests
+import re
 from bs4 import BeautifulSoup
 
 base_url = "https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions"
-html2 = urllib.request.urlopen(base_url).read()
-soup = BeautifulSoup(html2, "html.parser")
-html = soup.prettify("utf-8")
+r = requests.get(base_url)
+soup = BeautifulSoup(r.text, "html.parser")
+
+for word in soup.find_all(text=re.compile("student")):
+	string = str(word)
+	string = string.replace(string, "AMAZING students")
+	word.replace_with(string)
+
 with open("BSIpage.html", "wb") as file:
-	file.write(html)
+	file.write(str(soup).encode())
