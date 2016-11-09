@@ -9,11 +9,6 @@
 # Deliverables:
 # 1) Print the orginal text (150 tokens)
 # 1) Print the new text
-print("START*******")
-
-
-print("\n\nEND*******")
-
 
 # code developed by Jackie Cohen; revised by Paul Resnick
 # further revised by Colleen van Lent for Python3
@@ -24,37 +19,35 @@ import random
 nltk.download('punkt')
 
 from nltk import word_tokenize,sent_tokenize
+#added statement to import text2 file to use for madlib generation
 from nltk.book import text2
-
-debug = False #True
-
-# get file from user to make mad lib out of
-if debug:
-	print ("Getting information from file madlib_test.txt...\n")
 
 tokens = text2[0:150]
 
 print("TOKENS")
-print(tokens)
-tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-print("TAGGED TOKENS")
-print(tagged_tokens)
-if debug:
-	print ("First few tagged tokens are:")
-	for tup in tagged_tokens[:5]:
-		print (tup)
-
-tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "PRON":"a pronoun"}
-substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1, "PRON":.1}
+print("\n\nSTART*******")
 
 def spaced(word):
-	if word in [",", ".", "?", "!", ":"]:
+	if word in [",", ".", "?", "!", ":", ";"]:
 		return word
 	else:
 		return " " + word
 
-final_words = []
+new_list = list()
+#for each item in tokens
+for item in tokens:
+	#invoke spaced function on each item, then append into new list
+	new_list.append(spaced(item))
+#print out elements of the list using join method	
+print ("".join(new_list))
 
+tagged_tokens = nltk.pos_tag(tokens)
+
+#changed the percentages and added one more part of speech
+tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "PRON":"a pronoun"}
+substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1, "PRON":.1}
+
+final_words = []
 
 for (word, tag) in tagged_tokens:
 	if tag not in substitution_probabilities or random.random() > substitution_probabilities[tag]:
@@ -63,4 +56,5 @@ for (word, tag) in tagged_tokens:
 		new_word = input("Please enter %s:\n" % (tagmap[tag]))
 		final_words.append(spaced(new_word))
 
+print("\n\nEND*******")
 print ("".join(final_words))

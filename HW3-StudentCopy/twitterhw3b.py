@@ -11,20 +11,16 @@ import tweepy
 from textblob import TextBlob
 
 #my twitter account information
-access_token = "3006509597-dSfovhqgakdhl5YzjPr62n2LhW8VET3iDuI4x4q"
-access_token_secret = "3mnJDMPA8DEM6roaEjfJ3yNAYYKhlp1oPdOsXuujKjNwI"
-consumer_key = "pLUjmsAzgYqU4e3799AdHtfGG"
-consumer_secret = "pQqFUfpulRaGo4BiAT3chpw1jaBT3HFE6i2mppcFFiEWCuYn4O"
 
-# Boilerplate code here
+
+#boilerplate code for tweepy
 auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
 
-#search for public tweets matching 
+#search for public tweets matching search term
 public_tweets = api.search("noDAPL")
-
 
 total_tweets = 0
 total_tweet_polarity = 0
@@ -34,7 +30,7 @@ total_tweet_subjectivity = 0
 for tweet in public_tweets:
 	#increment total tweet count
 	total_tweets += 1
-	#print tweet
+	#print each tweet
 	print(tweet.text)
 	analysis = TextBlob(tweet.text)
 	#add each tweet's polarity into total polarity
@@ -45,9 +41,9 @@ for tweet in public_tweets:
 #print total tweets, must convert to a string first
 print ("Total number of tweets is " + str(total_tweets))
 
-#print average subjectivity, divide tweet_sub by total tweet count, then convert to string
-print ("Average subjectivity is " + str(tweet_subjectivity/total_tweets))
+#print average subjectivity, divide total_tweet_subjectivity by total tweet count, then convert to string
+print ("Average subjectivity is " + str(total_tweet_subjectivity/total_tweets))
 
-#print average polarity, divide tweet_pol by total tweet count, then convert to string
-print ("Average polarity is " + str(tweet_polarity/total_tweets))
+#print average polarity, divide total_tweet_polarity by total tweet count, then convert to string
+print ("Average polarity is " + str(total_tweet_polarity/total_tweets))
 
