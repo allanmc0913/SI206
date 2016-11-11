@@ -22,7 +22,7 @@ auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
 
 #search for public tweets matching search term
-public_tweets = api.search("noDAPL")
+public_tweets = api.search("Harbaugh")
 
 total_tweets = 0
 total_tweet_polarity = 0
@@ -44,8 +44,8 @@ for tweet in public_tweets:
 print ("Total number of tweets is " + str(total_tweets))
 
 #print average subjectivity, divide total_tweet_subjectivity by total tweet count, then convert to string
-print ("Average subjectivity is " + str(total_tweet_subjectivity/total_tweets))
+print ("Average subjectivity is: " + str(total_tweet_subjectivity/total_tweets))
 
 #print average polarity, divide total_tweet_polarity by total tweet count, then convert to string
-print ("Average polarity is " + str(total_tweet_polarity/total_tweets))
+print ("Average polarity is: " + str(total_tweet_polarity/total_tweets))
 

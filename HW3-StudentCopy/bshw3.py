@@ -23,9 +23,9 @@ soup = BeautifulSoup(r.text, "html.parser")
 
 #for loop to find every instance of "student" and replace it with "AMAZING student".  Regex accounts for when "students" is in the text since "student" is in "students"
 #referenced from http://stackoverflow.com/questions/15056633/python-find-text-using-beautifulsoup-then-replace-in-original-soup-variable
-for word in soup.find_all(text=re.compile("student")):
-	wordasstring = str(word)
-	fixedtext = wordasstring.replace("student", "AMAZING student")
+findstudent = soup.find_all(text=re.compile("student"))
+for word in findstudent:
+	fixedtext = word.replace("student", "AMAZING student")
 	word.replace_with(fixedtext)
 
 #for loop iterates through every image tag looking for a specifc src (logo2.png).  

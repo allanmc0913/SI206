@@ -47,8 +47,8 @@ print ("".join(start_text))
 tagged_tokens = nltk.pos_tag(tokens)
 
 #changed the percentages and added one more part of speech
-tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "PRON":"a pronoun"}
-substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1, "PRON":.1}
+tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective","ADV":"an adverb"}
+substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1,"ADV":.1}
 
 final_words = []
 
