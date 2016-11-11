@@ -1,3 +1,5 @@
+# Allan Chen, SI206 Homework 3
+
 # Using text2 from the nltk book corpa, create your own version of the
 # MadLib program.  
 
@@ -12,6 +14,7 @@
 
 # code developed by Jackie Cohen; revised by Paul Resnick
 # further revised by Colleen van Lent for Python3
+
 import nltk # requires some downloading/installing dependencies to use all its features; numpy is especially tricky to install
 import random
 
@@ -19,7 +22,7 @@ import random
 nltk.download('punkt')
 
 from nltk import word_tokenize,sent_tokenize
-#added statement to import text2 file to use for madlib generation
+#import text2 (Sense and Sensibility) file to use for madlib generation
 from nltk.book import text2
 
 tokens = text2[0:150]
@@ -33,13 +36,13 @@ def spaced(word):
 	else:
 		return " " + word
 
-new_list = list()
-#for each item in tokens
+start_text = list()
+#for each item in tokens list
 for item in tokens:
 	#invoke spaced function on each item, then append into new list
-	new_list.append(spaced(item))
+	start_text.append(spaced(item))
 #print out elements of the list using join method	
-print ("".join(new_list))
+print ("".join(start_text))
 
 tagged_tokens = nltk.pos_tag(tokens)
 

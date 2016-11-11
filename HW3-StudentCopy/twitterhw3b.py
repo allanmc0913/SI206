@@ -1,3 +1,5 @@
+# Allan Chen, SI206 Homework 3
+
 # In this assignment you must do a Twitter search on any term
 # of your choice.
 # Deliverables:
@@ -26,7 +28,7 @@ total_tweets = 0
 total_tweet_polarity = 0
 total_tweet_subjectivity = 0
 
-#for loop to iterate through each tweet matching search term
+#for loop to iterate through each tweet in public_tweets
 for tweet in public_tweets:
 	#increment total tweet count
 	total_tweets += 1
